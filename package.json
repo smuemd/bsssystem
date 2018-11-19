@@ -2,12 +2,13 @@
   "name": "styled-system",
   "version": "3.1.11",
   "description": "Responsive, theme-based style props for building design systems with React",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
+  "main": "dist/bsssystem.js",
+  "module": "dist/bsssystem.esm.js",
   "sideEffects": false,
   "scripts": {
-    "prepare": "npm run clean && npm run build:cjs && npm run build:esm",
+    "prepare": "npm run clean && npm run build:cjs && npm run build:esm && npm run build",
     "clean": "rm -rf dist && mkdir dist",
+    "build": "rollup -c",
     "build:cjs": "cross-env NODE_ENV=cjs babel src -o dist/index.cjs.js",
     "build:esm": "cross-env NODE_ENV=esm babel src -o dist/index.esm.js",
     "start": "mdx-go docs",
@@ -17,7 +18,18 @@
     "size": "npx bundlesize",
     "cover": "nyc report --reporter=html --reporter=lcov > coverage.lcov",
     "codecov": "nyc report --reporter=html --reporter=lcov > coverage.lcov && npx codecov",
-    "test": "nyc ava",
+    "lint": "standard | snazzy",
+    "pretest": "npm run lint -s",
+    "test": "NODE_ENV=test nyc ava",
+    "test::background": "NODE_ENV=test ava test/background.test.js",
+    "test::border": "NODE_ENV=test ava test/border.test.js",
+    "test::core": "NODE_ENV=test ava test/core.test.js",
+    "test::layout": "NODE_ENV=test ava test/layout.test.js",
+    "test::misc": "NODE_ENV=test ava test/misc.test.js",
+    "test::position": "NODE_ENV=test ava test/position.test.js",
+    "test::typography": "NODE_ENV=test ava test/typography.test.js",
+    "test::util": "NODE_ENV=test ava test/util.test.js",
+    "test::variants": "NODE_ENV=test ava test/variants.test.js",
     "bench": "node bench"
   },
   "keywords": [
@@ -45,13 +57,24 @@
     "react-live": "^1.11.0",
     "react-test-renderer": "^16.4.0",
     "rebass": "^3.0.0-8",
+    "rollup": "^0.67.3",
+    "rollup-plugin-buble": "^0.19.4",
+    "rollup-plugin-filesize": "^5.0.1",
+    "rollup-plugin-uglify": "^6.0.0",
     "scrs": "^1.1.0",
+    "snazzy": "^8.0.0",
+    "standard": "^12.0.1",
     "styled-components": "^4.0.0"
   },
   "ava": {
+    "files": [
+      "test/**/*.test.js",
+      "!test/index.js"
+    ],
     "require": [
       "@babel/register"
-    ]
+    ],
+    "verbose": "true"
   },
   "nyc": {
     "exclude": [
@@ -67,6 +90,16 @@
       "path": "dist/*"
     }
   ],
+  "standard": {
+    "ignore": [
+      "/packages/**",
+      "/examples/**",
+      "/docs/**",
+      "/src/**",
+      "/test/index.js",
+      "/dist/**"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jxnblk/styled-system.git"
