@@ -24,6 +24,6 @@ module.exports = {
       plugins: [
         ['@babel/transform-runtime', { useESModules: true }]
       ]
-    },
+    }
   }
 }
