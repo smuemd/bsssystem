@@ -219,7 +219,7 @@ test('isNum checks for a number', t => {
 
 // mergeStyles
 
-test('mergeStyles patches 1st levvel children object', t => {
+test('mergeStyles patches n level children object', t => {
   const a = mergeStyles({
     a: 'hello',
     b: { beep: 'boop' },
@@ -242,9 +242,9 @@ test('mergeStyles patches 1st levvel children object', t => {
       e: 'f',
       g: {
         number: 3,
-        // drill: 'baby, drill',
+        drill: 'baby, drill',
         even: {
-          // one: 'level deeper',
+          one: 'level deeper',
           num: 4
         }
       }
