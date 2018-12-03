@@ -6,9 +6,11 @@ import { uglify } from 'rollup-plugin-uglify'
 // import resolve from 'rollup-plugin-node-resolve';
 
 export default [
+
+  // background
+
   {
     external: [
-      'prop-types',
       path.resolve(__dirname, 'lib/util.js')
     ],
     input: 'lib/background.js',
@@ -23,28 +25,12 @@ export default [
       ? []
       : [ buble(), filesize() ]
   },
-  {
-    external: [
-      'prop-types',
-      path.resolve(__dirname, 'lib/util.js')
-    ],
-    input: 'lib/background.js',
-    output: {
-      exports: 'named',
-      file: 'dist/background.esm.js',
-      format: 'esm',
-      name: 'background',
-      sourcemap: true
-    },
-    plugins: [ buble(), filesize() ]
-  },
 
   // core
 
   {
     external: [
-      'prop-types'
-      // path.resolve(__dirname, 'lib/util.js')
+      path.resolve(__dirname, 'lib/util.js')
     ],
     input: 'lib/core.js',
     output: {
@@ -58,74 +44,31 @@ export default [
       ? []
       : [ buble(), filesize() ]
   },
-  {
-    external: [
-      'prop-types'
-      // path.resolve(__dirname, 'lib/util.js')
-    ],
-    input: 'lib/core.js',
-    output: {
-      exports: 'named',
-      file: 'dist/core.esm.js',
-      format: 'esm',
-      name: 'core',
-      sourcemap: true
-    },
-    plugins: [ buble(), filesize() ]
-  },
 
   // flexbox
 
   // gridLayout
 
   // index
+  {
+    input: 'lib/index.js',
+    output: {
+      exports: 'named',
+      file: 'dist/systemthing.js',
+      format: 'umd',
+      name: 'systemthing',
+      sourcemap: true
+    },
+    plugins: [ buble(), filesize() ]
+  },
 
   {
-    external: 'prop-types',
     input: 'lib/index.js',
     output: {
       exports: 'named',
-      file: 'dist/bsssystem.cjs.js',
-      format: 'cjs',
-      name: 'system',
-      sourcemap: true
-    },
-    plugins: process.env.TEST
-      ? []
-      : [ buble(), filesize() ]
-  },
-  {
-    external: 'prop-types',
-    input: 'lib/index.js',
-    output: {
-      exports: 'named',
-      file: 'dist/bsssystem.esm.js',
-      format: 'esm',
-      name: 'system',
-      sourcemap: true
-    },
-    plugins: [ buble(), filesize() ]
-  },
-  {
-    external: 'prop-types',
-    input: 'lib/index.js',
-    output: {
-      exports: 'named',
-      file: 'dist/bsssystem.js',
+      file: 'dist/systemthing.min.js',
       format: 'umd',
-      name: 'bsssystem',
-      sourcemap: true
-    },
-    plugins: [ buble(), filesize() ]
-  },
-  {
-    external: 'prop-types',
-    input: 'lib/index.js',
-    output: {
-      exports: 'named',
-      file: 'dist/bsssystem.min.js',
-      format: 'umd',
-      name: 'bsssystem',
+      name: 'systemthing',
       sourcemap: true
     },
     plugins: [
@@ -135,11 +78,22 @@ export default [
     ]
   },
 
+  {
+    input: 'lib/index.js',
+    output: {
+      exports: 'named',
+      file: 'dist/systemthing.esm.js',
+      format: 'esm',
+      name: 'systemthing',
+      sourcemap: true
+    },
+    plugins: [ buble(), filesize() ]
+  },
+
   // layout
 
   {
     external: [
-      'prop-types',
       path.resolve(__dirname, 'lib/util.js')
     ],
     input: 'lib/layout.js',
@@ -154,27 +108,11 @@ export default [
       ? []
       : [ buble(), filesize() ]
   },
-  {
-    external: [
-      'prop-types',
-      path.resolve(__dirname, 'lib/util.js')
-    ],
-    input: 'lib/layout.js',
-    output: {
-      exports: 'named',
-      file: 'dist/layout.esm.js',
-      format: 'esm',
-      name: 'layout',
-      sourcemap: true
-    },
-    plugins: [ buble(), filesize() ]
-  },
 
   // misc
 
   {
     external: [
-      'prop-types',
       path.resolve(__dirname, 'lib/util.js')
     ],
     input: 'lib/misc.js',
@@ -189,29 +127,11 @@ export default [
       ? []
       : [ buble(), filesize() ]
   },
-  {
-    external: [
-      'prop-types',
-      path.resolve(__dirname, 'lib/util.js')
-    ],
-    input: 'lib/misc.js',
-    output: {
-      exports: 'named',
-      file: 'dist/misc.esm.js',
-      format: 'esm',
-      name: 'misc',
-      sourcemap: true
-    },
-    plugins: [ buble(), filesize() ]
-  },
-
-  // todo mixed
 
   // position
 
   {
     external: [
-      'prop-types',
       path.resolve(__dirname, 'lib/util.js')
     ],
     input: 'lib/position.js',
@@ -226,27 +146,11 @@ export default [
       ? []
       : [ buble(), filesize() ]
   },
-  {
-    external: [
-      'prop-types',
-      path.resolve(__dirname, 'lib/util.js')
-    ],
-    input: 'lib/position.js',
-    output: {
-      exports: 'named',
-      file: 'dist/position.esm.js',
-      format: 'esm',
-      name: 'position',
-      sourcemap: true
-    },
-    plugins: [ buble(), filesize() ]
-  },
 
   // typography
 
   {
     external: [
-      'prop-types',
       path.resolve(__dirname, 'lib/util.js')
     ],
     input: 'lib/typography.js',
@@ -261,31 +165,15 @@ export default [
       ? []
       : [ buble(), filesize() ]
   },
-  {
-    external: [
-      'prop-types',
-      path.resolve(__dirname, 'lib/util.js')
-    ],
-    input: 'lib/typography.js',
-    output: {
-      exports: 'named',
-      file: 'dist/typography.esm.js',
-      format: 'esm',
-      name: 'typography',
-      sourcemap: true
-    },
-    plugins: [ buble(), filesize() ]
-  },
 
   // util
 
   {
-    external: 'prop-types',
     input: 'lib/util.js',
     output: {
       exports: 'named',
-      file: 'dist/util.cjs.js',
-      format: 'cjs',
+      file: 'dist/util.js',
+      format: 'umd',
       name: 'util',
       sourcemap: true
     },
@@ -293,24 +181,11 @@ export default [
       ? []
       : [ buble(), filesize() ]
   },
-  {
-    external: 'prop-types',
-    input: 'lib/util.js',
-    output: {
-      exports: 'named',
-      file: 'dist/util.esm.js',
-      format: 'esm',
-      name: 'util',
-      sourcemap: true
-    },
-    plugins: [ buble(), filesize() ]
-  },
 
   // variants
 
   {
     external: [
-      'prop-types',
       path.resolve(__dirname, 'lib/util.js')
     ],
     input: 'lib/variants.js',
@@ -324,20 +199,5 @@ export default [
     plugins: process.env.TEST
       ? []
       : [ buble(), filesize() ]
-  },
-  {
-    external: [
-      'prop-types',
-      path.resolve(__dirname, 'lib/util.js')
-    ],
-    input: 'lib/variants.js',
-    output: {
-      exports: 'named',
-      file: 'dist/variants.esm.js',
-      format: 'esm',
-      name: 'variants',
-      sourcemap: true
-    },
-    plugins: [ buble(), filesize() ]
   }
 ]
