@@ -24,13 +24,13 @@ test('exports space, width, and fontSize', t => {
 })
 
 test('space returns margin declarations', t => {
-  const dec = space({ m: 1 })
+  const dec = space({ margin: 1 })
   t.deepEqual(dec, { margin: '4px' })
 })
 
 test('space returns non-scalar margins', t => {
-  const a = space({ m: 24 })
-  const b = space({ m: 'auto' })
+  const a = space({ margin: 24 })
+  const b = space({ margin: 'auto' })
   t.deepEqual(a, { margin: '24px' })
   t.deepEqual(b, { margin: 'auto' })
 })
@@ -38,23 +38,23 @@ test('space returns non-scalar margins', t => {
 test('space returns keyed values', t => {
   const a = space({
     theme,
-    m: 'big'
+    margin: 'big'
   })
   t.is(a.margin, theme.space.big + 'px')
 })
 
 test('space returns negative margins', t => {
-  const a = space({ m: -1 })
-  const b = space({ m: -24 })
+  const a = space({ margin: -1 })
+  const b = space({ margin: -24 })
   t.deepEqual(a, { margin: '-4px' })
   t.deepEqual(b, { margin: '-24px' })
 })
 
 test('space returns directional margins', t => {
-  const tp = space({ mt: 1 })
-  const r = space({ mr: 2 })
-  const b = space({ mb: 3 })
-  const l = space({ ml: 4 })
+  const tp = space({ marginTop: 1 })
+  const r = space({ marginRight: 2 })
+  const b = space({ marginBottom: 3 })
+  const l = space({ marginLeft: 4 })
   const x = space({ mx: 1 })
   const y = space({ my: 2 })
   t.deepEqual(tp, { 'marginTop': '4px' })
@@ -66,7 +66,7 @@ test('space returns directional margins', t => {
 })
 
 test('space returns responsive margins', t => {
-  const a = space({ m: [ 0, 1 ] })
+  const a = space({ margin: [ 0, 1 ] })
   t.deepEqual(a, {
     margin: '0px',
     '@media screen and (min-width: 40em)': {
@@ -76,7 +76,7 @@ test('space returns responsive margins', t => {
 })
 
 test('space returns responsive directional margins', t => {
-  const a = space({ mt: [ 0, 1 ], mb: [ 2, 3 ] })
+  const a = space({ marginTop: [ 0, 1 ], marginBottom: [ 2, 3 ] })
   t.deepEqual(a, {
     marginBottom: '8px',
     marginTop: '0px',
@@ -89,8 +89,8 @@ test('space returns responsive directional margins', t => {
 
 test.skip('space sorts responsive directional margins', t => {
   const a = space({
-    mb: 2,
-    m: [ 0, 1 ]
+    marginBottom: 2,
+    margin: [ 0, 1 ]
   })
   const keys = Object.keys(a)
   t.deepEqual(keys, [
@@ -101,22 +101,22 @@ test.skip('space sorts responsive directional margins', t => {
 })
 
 test('space returns padding declarations', t => {
-  const dec = space({ p: 1 })
+  const dec = space({ padding: 1 })
   t.deepEqual(dec, { padding: '4px' })
 })
 
 test('space returns non-scalar paddings', t => {
-  const a = space({ p: 24 })
-  const b = space({ p: 'auto' })
+  const a = space({ padding: 24 })
+  const b = space({ padding: 'auto' })
   t.deepEqual(a, { padding: '24px' })
   t.deepEqual(b, { padding: 'auto' })
 })
 
 test('space returns directional paddings', t => {
-  const tp = space({ pt: 1 })
-  const r = space({ pr: 2 })
-  const b = space({ pb: 3 })
-  const l = space({ pl: 4 })
+  const tp = space({ paddingTop: 1 })
+  const r = space({ paddingRight: 2 })
+  const b = space({ paddingBottom: 3 })
+  const l = space({ paddingLeft: 4 })
   const x = space({ px: 1 })
   const y = space({ py: 2 })
   t.deepEqual(tp, { 'paddingTop': '4px' })
@@ -128,7 +128,7 @@ test('space returns directional paddings', t => {
 })
 
 test('space returns responsive paddings', t => {
-  const a = space({ p: [0, 1] })
+  const a = space({ padding: [0, 1] })
   t.deepEqual(a, {
     padding: '0px',
     '@media screen and (min-width: 40em)': {
@@ -138,7 +138,7 @@ test('space returns responsive paddings', t => {
 })
 
 test('space returns responsive directional paddings', t => {
-  const a = space({ pt: [0, 1], pb: [2, 3] })
+  const a = space({ paddingTop: [0, 1], paddingBottom: [2, 3] })
   t.deepEqual(a, {
     paddingBottom: '8px',
     paddingTop: '0px',
@@ -150,10 +150,10 @@ test('space returns responsive directional paddings', t => {
 })
 
 test('space can be configured with a theme', t => {
-  const a = space({ theme, m: 1 })
-  const b = space({ theme, m: 2 })
-  const c = space({ theme, m: 3 })
-  const d = space({ theme, m: 4 })
+  const a = space({ theme, margin: 1 })
+  const b = space({ theme, margin: 2 })
+  const c = space({ theme, margin: 3 })
+  const d = space({ theme, margin: 4 })
   t.deepEqual(a, { margin: '6px' })
   t.deepEqual(b, { margin: '12px' })
   t.deepEqual(c, { margin: '18px' })
@@ -181,18 +181,18 @@ test('space can be configured with a theme', t => {
 // })
 
 test('space can accept string values', t => {
-  const a = space({ m: 1, p: '7em' }, { space: [ '1em', '2em' ] })
+  const a = space({ margin: 1, padding: '7em' }, { space: [ '1em', '2em' ] })
   t.deepEqual(a, { margin: '2em', padding: '7em' })
 })
 
 test('space can accept string values with negative', t => {
-  const a = space({ m: -1 }, { space: ['1em', '2em'] })
+  const a = space({ margin: -1 }, { space: ['1em', '2em'] })
   t.deepEqual(a, { margin: '-2em' })
 })
 
 test('space handles null values in arrays', t => {
   const a = space({
-    m: [ 0, null, 2 ]
+    margin: [ 0, null, 2 ]
   }, { space: [ 0, 4, 8, 16 ] })
   t.deepEqual(a, {
     margin: '0px',
@@ -205,7 +205,7 @@ test('space handles null values in arrays', t => {
 // fixes #326
 test('space handles mismatch between value and brakpoints array', t => {
   const a = space(
-    { m: [ 0, 2, 3, 4, 5, 6, 7 ] },
+    { margin: [ 0, 2, 3, 4, 5, 6, 7 ] },
     { space: [ 0, 4, 8, 16, 21 ],
       breakpoints: [ '32em', '48em', '64em' ] }
   )
@@ -225,7 +225,7 @@ test('space handles mismatch between value and brakpoints array', t => {
 
 test('space handles alias values', t => {
   const a = space(
-    { m: 'large' },
+    { margin: 'large' },
     { space: { large: 9999 } } // theme
   )
   t.deepEqual(a, { margin: '9999px' })
@@ -288,9 +288,13 @@ test('fontSize returns scale values', t => {
 test('fontSize returns keyed values', t => {
   const a = fontSize({
     theme,
-    fontSize: 'big'
+    fontSize: [ 3, 'big' ]
   })
-  t.is(a.fontSize, theme.fontSizes.big + 'px')
+  // t.is(a.fontSize, theme.fontSizes.big + 'px')
+  t.deepEqual(a, {
+    fontSize: '24px',
+    '@media screen and (min-width: 32em)': { fontSize: '128px' }
+  }, console.log(a))
 })
 
 test('fontSize returns pixel values', t => {
@@ -337,14 +341,14 @@ test('fontSize returns null or undefined', t => {
 
 test('color returns color and backgroundColor styles', t => {
   const a = color({ color: 'tomato' })
-  const b = color({ bg: 'pink' })
+  const b = color({ backgroundColor: 'pink' })
   t.deepEqual(a, { color: 'tomato' })
   t.deepEqual(b, { backgroundColor: 'pink' })
 })
 
 test('color returns theme.colors values', t => {
   const a = color({ theme, color: 'blue' })
-  const b = color({ bg: 'green' }, theme)
+  const b = color({ backgroundColor: 'green' }, theme)
   t.deepEqual(a, { color: theme.colors.blue })
   t.deepEqual(b, { backgroundColor: theme.colors.green })
 })

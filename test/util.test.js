@@ -1,77 +1,12 @@
 import test from 'ava'
 
-import * as system from '../lib'
-import * as util from '../lib/util'
+import { width } from '../lib/core'
+import { display } from '../lib/layout'
 import {
-  background,
-  backgroundImage,
-  backgroundPosition,
-  backgroundRepeat,
-  backgroundSize
-} from '../lib/background'
-
-import { space, width, fontSize, color } from '../lib/core'
-
-import {
-  display,
-  height,
-  maxHeight,
-  maxWidth,
-  minHeight,
-  minWidth,
-  ratio,
-  // ratioPadding,
-  size,
-  // sizeWidth,
-  // sizeHeight,
-  verticalAlign
-} from '../lib/layout'
-
-import {
-  // border,
-  // borderBottom,
-  borderColor,
-  // borderLeft,
-  borderRadius,
-  borders,
-  // borderTop,
-  // borderRight,
-
-  boxShadow,
-  opacity
-  // overflow
-} from '../lib/misc'
-
-import {
-  bottom,
-  left,
-  position,
-  right,
-  top,
-  zIndex
-} from '../lib/position'
-
-import {
-  fontFamily,
-  // fontStyle,
-  fontWeight,
-  letterSpacing,
-  lineHeight,
-  textAlign
-} from '../lib/typography'
-
-import {
-  buttonStyle,
-  colorStyle,
-  textStyle
-} from '../lib/variants'
-
-const {
   addPx,
   createStyle,
   createStyleFn,
   createResponsiveStyles,
-  // cloneFn,
   composeStyleFns,
   createStyleVariantFn,
   defaultBreakpoints,
@@ -84,66 +19,8 @@ const {
   isEmpty,
   isNum,
   mergeStyles,
-  // responsive,
   themeGet
-} = util
-
-const styles = {
-  background,
-  backgroundImage,
-  backgroundPosition,
-  backgroundRepeat,
-  backgroundSize,
-
-  // border,
-  // borderBottom,
-  borderColor,
-  // borderLeft,
-  borderRadius,
-  borders,
-  // borderTop,
-  // borderRight,
-
-  space,
-  width,
-  fontSize,
-  color,
-
-  display,
-  height,
-  maxHeight,
-  maxWidth,
-  minHeight,
-  minWidth,
-  ratio,
-  // ratioPadding,
-  size,
-  // sizeWidth,
-  // sizeHeight,
-  verticalAlign,
-
-  boxShadow,
-  opacity,
-  // overflow,
-
-  bottom,
-  left,
-  position,
-  right,
-  top,
-  zIndex,
-
-  fontFamily,
-  // fontStyle,
-  fontWeight,
-  letterSpacing,
-  lineHeight,
-  textAlign,
-
-  buttonStyle,
-  colorStyle,
-  textStyle
-}
+} from '../lib/util.js'
 
 const theme = {
   breakpoints: [ 32, 48, 64 ].map(n => n + 'em'),
@@ -271,6 +148,12 @@ test('mergeStyles works as reducer function', t => {
 test('mergeStyles doesn’t throw with null values', t => {
   t.notThrows(() => mergeStyles(null, null))
   t.deepEqual(mergeStyles(null, undefined), {})
+})
+
+test('mergeStyles don\'t deep merge arrays', t => {
+  const a = mergeStyles({ array: [1, 2, 3] }, { array: 'overwritten' })
+
+  t.is(a.array, 'overwritten')
 })
 
 // composeStyleFns
@@ -705,15 +588,4 @@ test('styleVariant returns null or undefined', t => {
     theme, variant: 'primary'
   })
   t.true(a == null)
-})
-
-Object.keys(styles).forEach(key => {
-  test.skip(`${key}.propTypes is an object`, t => {
-    const fn = system[key]
-    if (typeof fn !== 'function') return t.pass()
-    t.is(typeof fn.propTypes, 'object')
-    Object.keys(fn.propTypes).forEach(prop => {
-      t.is(typeof fn.propTypes[prop], 'function')
-    })
-  })
 })
