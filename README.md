@@ -17,7 +17,7 @@ Unlike styled-system, this implementation is geared to also work with virtual do
 This fork provides the same core functionality found in the [orignal styled-system libary](https://github.com/jxnblk/styled-system#features),
 
 plus:
-+ Works with any virtual DOM view layer (e. g. [Mithril](https://mithril.js.org/)
++ Works with any virtual DOM view layer (e. g. [Mithril](https://mithril.js.org/))
 + Works great in tandem with [bss](https://github.com/porsager/bss) and [stylething](https://github.com/smuemd/stylething).
 
 minus:
@@ -71,9 +71,7 @@ It is still possible however to also use `theme` as a prop on the first argument
 
 ### No prop abbreviations
 
-Mapping of popular style prop abbreviations to corresponding css properties (e. g. `mt` to `marginTop`) is delegated downstream. 
-
-The only exceptions are `mx`, `my`, `px` and `py` within the `space` function. For there are no css equivalents to these props. 
+Mapping of popular style prop abbreviations to corresponding css properties (e. g. `mt` to `marginTop`) is delegated downstream. The only exceptions are `mx`, `my`, `px` and `py` within the `space` function. For there are no css equivalents to these props. 
 
 ### Default values
 
@@ -182,12 +180,12 @@ bundled props:
 `py`
 
 ### No PropTypes
-This fork ships without external dependencies. Facebook's [`prop-types`](https://github.com/facebook/prop-types) has been removed. Instead type declaration is delegated downstream. Users of this fork have to be prepared to properly type out components themselves, if necessary.
+Facebook's [`prop-types`](https://github.com/facebook/prop-types) has been removed. Instead type declaration is delegated downstream. Users of this fork have to be prepared to properly type out components themselves, if necessary. This fork ships without external dependencies. 
 
 ### Width fit & fill
 The `width` style yielding function accepts two additional prop values:
-- `{ width: 'fit }` - Make an element shrink wrap its content with `flex-basis`.
-- `{ width: 'fill}` - Make an element fill the remaining space. Distribute space evenly on multiple elements.
+- `{ width: 'fit' }` - Make an element shrink wrap its content with `flex-basis`.
+- `{ width: 'fill' }` - Make an element fill the remaining space. Distribute space evenly on multiple elements.
 
 ### low level changes
 
@@ -212,22 +210,22 @@ let bingo = get({ path: { in: { obj: 'Bingo' } } }, [ 'path.in.obj' ])
 Note: Refactoring the `get` function apparently resulted in significant performance improvements for some style functions.
 
 #### `num`
-The `num` utility is renamed to `isNum`.
+The `num` utility is renamed to **`isNum`**.
 
 #### `px`
-The `px` transformation utility is renamed to `addPx`.
+The `px` transformation utility is renamed to **`addPx`**.
 
 #### `cloneFunc`
-The `cloneFunc` utility has been removed together with the `prop-types` dependency.
+The `cloneFunc` utility has been removed together with the *`prop-types`* dependency.
 
 #### `merge`
-The `merge` utility is renamed to `mergeStyles`.
+The `merge` utility is renamed to **`mergeStyles`**.
 
 #### `compose`
-The `compose` utility is renamed to `composeStyleFns`. (may be removed entirely, as it is only used in a benchmarking script right now)
+The `compose` utility is renamed to **`composeStyleFns`**. (may be removed entirely, as it is only used in a benchmarking script right now)
 
 #### `style`
-The `style` utility function is renamed to `createStyleFn`.
+The `style` utility function is renamed to **`createStyleFn`**.
 The original function was refactored to also process arrays when passed as `prop` and `cssProptery` arguments. This enables the prop bundling functionality described above.
 
 ```js
@@ -298,7 +296,7 @@ Usage in combination with React and React-focused css-in-js libraries such as [s
 ```jsx
 // Example uses react and styled-components, but systemthing works with most other vdom and css-in-js libraries as well
 import React from 'react'
-Import ReactDOM from 'react-dom' // virtual DOM libary
+import ReactDOM from 'react-dom' // virtual DOM libary
 import styled from 'styled-components' // css-in-js layer / component factory
 import { space, width, fontSize, color } from 'systemthing'
 
