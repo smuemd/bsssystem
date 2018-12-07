@@ -1,6 +1,23 @@
 
 # Changelog
 
+## v1.74
+
+- Style yielding functions can be called with a custom theme by passing a theme-object as a second argument.
+- Mapping of popular style prop abbreviations to corresponding css properties (e. g. `mt` to `marginTop`) is delegated downstream. The only exceptions are `mx`, `my`, `px` and `py` within the `space` function.
+- Directly instrument style yielding functions with default values as a fallback in case no corresponding style props are present at call time.
+- `backgrounds`, `borders`, `color`, `direction`, `flexbox`, `gridLayout`, `gridGaps`, and `space` functions bundle multiple style props each.
+- remove [`prop-types`](https://github.com/facebook/prop-types) dependency.
+-  the `width` function now accepts 'fit' and 'fill' prop values
+- refactor of `get` utility function to accept excactly two arguments `obj :: Object` and `path :: Array`. No more destructuring. Dot notation in `path` strings is no longer supported out of the box.
+- `num` utility renamed to **`isNum`**
+- `px` transformation utility renamed to **`addPx`**
+- removed `cloneFunc` utility
+- `merge` utility renamed to **`mergeStyles`**
+- `compose` utility is renamed to **`composeStyleFns`**
+- `style` utility function renamed to **`createStyleFn`**
+- `style` utility function refactored to now also accept arrays when passed as `prop` and `cssProptery` arguments.
+
 ## v3.1.10 2018-10-10
 
 - Convert numbers to pixels with keyed space values

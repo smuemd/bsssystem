@@ -136,7 +136,7 @@ bundled props:
 `color`,
 `backgroundColor`
 
-#### 4. ` direction`
+#### 4. `direction`
 bundled props:
 `top`,
 `right`,
