@@ -1,6 +1,6 @@
 {
-  "name": "styled-system",
-  "version": "3.1.11",
+  "name": "systemthing",
+  "version": "0.1.0",
   "description": "Responsive, theme-based style props for building design systems",
   "main": "dist/systemthing.js",
   "module": "dist/systemthing.esm.js",
