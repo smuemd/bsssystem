@@ -1,7 +1,7 @@
 
 # Changelog
 
-## v1.74
+## v1.74 2018-12-07 
 
 - Style yielding functions can be called with a custom theme by passing a theme-object as a second argument.
 - Mapping of popular style prop abbreviations to corresponding css properties (e. g. `mt` to `marginTop`) is delegated downstream. The only exceptions are `mx`, `my`, `px` and `py` within the `space` function.
@@ -17,6 +17,7 @@
 - `compose` utility is renamed to **`composeStyleFns`**
 - `style` utility function renamed to **`createStyleFn`**
 - `style` utility function refactored to now also accept arrays when passed as `prop` and `cssProptery` arguments.
+- Removed `mixed` utility function
 
 ## v3.1.10 2018-10-10
 
