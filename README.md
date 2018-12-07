@@ -2,6 +2,20 @@
 
 Responsive, theme-based style props for building design systems in ~~React~~ JavaScript
 
+[![Build Status][ci]][travis]
+[![Version][]][npm]
+![size][]
+![MIT License][license]
+
+[ci]: https://flat.badgen.net/travis/smuemd/systemthing
+[version]: https://flat.badgen.net/npm/v/systemthing
+[license]: https://flat.badgen.net/badge/license/MIT/blue
+[size]: https://flat.badgen.net/bundlephobia/minzip/systemthing
+
+[npm]: https://npmjs.com/package/systemthing
+[travis]: https://travis-ci.org/smuemd/systemthing
+[github]: https://github.com/smuemd/systemthing
+
 ```sh
 npm i systemthing
 ```
