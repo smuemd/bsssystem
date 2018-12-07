@@ -294,7 +294,7 @@ test('fontSize returns keyed values', t => {
   t.deepEqual(a, {
     fontSize: '24px',
     '@media screen and (min-width: 32em)': { fontSize: '128px' }
-  }, console.log(a))
+  })
 })
 
 test('fontSize returns pixel values', t => {
